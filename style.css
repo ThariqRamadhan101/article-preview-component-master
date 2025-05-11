@@ -1,0 +1,221 @@
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap");
+
+/* Root Variables */
+:root {
+  /* Colors */
+  --very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --desaturated-dark-blue: hsl(214, 17%, 51%);
+  --grayish-blue: hsl(212, 23%, 69%);
+  --light-grayish-blue: hsl(210, 46%, 95%);
+
+  /* Typography */
+  --font-family-primary: "Manrope", sans-serif;
+  --font-size-body: 13px;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family-primary);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--light-grayish-blue);
+  color: var(--desaturated-dark-blue);
+}
+
+.container {
+  margin: auto 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.container__image {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 2px;
+}
+
+.container__title {
+  margin: 35px 30px 20px 30px;
+  font-weight: var(--font-weight-bold);
+  font-size: medium;
+}
+
+.container__description {
+  margin: 0 30px 35px 30px;
+}
+
+.container__footer {
+  width: inherit;
+  height: 70px;
+  padding: 30px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.container__footer--active {
+  background-color: var(--very-dark-grayish-blue);
+  border-radius: 0 0 1rem 1rem;
+}
+
+.footer__author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.container__footer--active .footer__author {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.footer__dialog {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.container__footer--active .footer__dialog {
+  display: flex;
+  opacity: 1;
+}
+.container__footer--active .dialog__social-media {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.author__photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.info__name {
+  font-weight: var(--font-weight-bold);
+}
+
+.footer__share-button {
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  background: var(--light-grayish-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.container__footer--active .footer__share-button {
+  background: var(--desaturated-dark-blue);
+}
+
+.share-button__icon {
+  width: 15px;
+  height: 15px;
+  transition: filter 0.3s ease;
+}
+
+.container__footer--active .share-button__icon {
+  filter: brightness(0) invert(1);
+}
+
+.social-media__text {
+  letter-spacing: 0.5rem;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  display: none;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media screen and (min-width: 1100px) {
+  .container {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 400px 2fr;
+  }
+
+  .container__image-wrapper {
+    width: 400px;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 1rem 0 0 1rem;
+  }
+
+  .container__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem 0 0 1rem;
+    transition: transform 1s ease-in-out;
+  }
+
+  .container__image:hover {
+    transform: scale(1.1);
+  }
+
+  .container__title {
+    font-size: x-large;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .container__description {
+    margin-bottom: 10px;
+  }
+
+  .container__footer--active {
+    background: white;
+  }
+  .container__footer--active .footer__author {
+    display: flex;
+    opacity: 1;
+  }
+
+  .container__footer--active .footer__dialog {
+    position: absolute;
+    bottom: 110px;
+    right: -70px;
+    background: var(--very-dark-grayish-blue);
+    padding: 20px 40px;
+    border-radius: 1rem;
+  }
+
+  .container__footer--active .footer__dialog-arrow {
+    position: absolute;
+    bottom: -8px;
+    right: 109px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid var(--very-dark-grayish-blue);
+  }
+}
